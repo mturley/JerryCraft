@@ -1,27 +1,27 @@
-name: JerryCraft
+commands: 
+  dial: 
+    description: "Dial an address on your portal gun."
+    permission: jerrycraft.dial
+    permission-message: "Lick-Lick-Lick My Balls! You don't have the <permission> permission."
 main: cx.lynch.JerryCraft.JerryCraft
+name: JerryCraft
+permissions: 
+  jerrycraft.block: 
+    default: true
+    description: "Allows user to create teleport blockers."
+  jerrycraft.dial.anywhere: 
+    default: op
+    description: "Allows user to bypass restricted areas."
+  jerrycraft.dial.bungee: 
+    default: true
+    description: "Allows the user to make a portal to another server."
+  jerrycraft.dial.free: 
+    default: op
+    description: "Allows for free portaling."
+  jerrycraft.dial.local: 
+    default: op
+    description: "Allows to portal in this server."
+  jerrycraft.dial.preset: 
+    default: true
+    description: "Allows the user to make a portal to a preset destination."
 version: 1.0
-commands:
-   dial:
-      description: Dial an address on your portal gun.
-      permission: jerrycraft.dial
-      permission-message: Lick-Lick-Lick My Balls! You don't have the <permission> permission.
-permissions:
-   jerrycraft.dial.local
-      description: Allows to portal in this server.
-      default: op
-   jerrycraft.dial.bungee
-      description: Allows the user to make a portal to another server.
-      default: true
-   jerrycraft.dial.preset
-      description: Allows the user to make a portal to a preset destination.
-      default: true
-   jerrycraft.dial.free:
-      description: Allows for free portaling.
-      default: op
-   jerrycraft.dial.anywhere:
-      description: Allows user to bypass restricted areas.
-      default: op
-   jerrycraft.block:
-      description: Allows user to create teleport blockers.
-      default: true

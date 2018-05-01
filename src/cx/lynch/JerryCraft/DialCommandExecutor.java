@@ -32,31 +32,39 @@ public class DialCommandExecutor implements CommandExecutor {
 				String world = player.getLocation().getWorld().getName();
 
 				// Determine what type of command is issued.
-				if (args.length == 1 && player.hasPermission("jerrycraft.dial.preset")) {
-					// TODO: A database for warps
-					switch (args[0]) {
-					case "spawn":
-						x = 270;
-						y = 65;
-						z = 330;
-						world = "world";
+				if (args.length == 1) {
+					if (player.hasPermission("jerrycraft.dial.preset")) {
+						// TODO: A database for warps
+						switch (args[0]) {
+							case "spawn":
+								x = 270;
+								y = 65;
+								z = 330;
+								world = "world";
+						}
+					} else {
+						return false;
 					}
-				} else if (args.length == 2 && player.hasPermission("jerrycraft.dial.bungee")) {
-					// Make the portalgun Item & add it to the player's inventory
-					ItemStack portalGun = new ItemStack(Material.DIAMOND_HOE);
-					portalGun.addEnchantment(Enchantment.VANISHING_CURSE, 1);
-
-					ItemMeta portalGunMeta = portalGun.getItemMeta();
-					portalGunMeta.setDisplayName(player.getDisplayName() + "'s Portal Gun");
-
-					List<String> portalGunLore = new ArrayList<String>();
-					portalGunLore.add(args[1]);
-
-					portalGunMeta.setLore(portalGunLore);
-					portalGun.setItemMeta(portalGunMeta);
-
-					player.getInventory().addItem(portalGun);
-					return true;
+				} else if (args.length == 2) {
+					if (player.hasPermission("jerrycraft.dial.bungee")) {
+						// Make the portalgun Item & add it to the player's inventory
+						ItemStack portalGun = new ItemStack(Material.DIAMOND_HOE);
+						portalGun.addEnchantment(Enchantment.VANISHING_CURSE, 1);
+	
+						ItemMeta portalGunMeta = portalGun.getItemMeta();
+						portalGunMeta.setDisplayName(player.getDisplayName() + "'s Portal Gun");
+	
+						List<String> portalGunLore = new ArrayList<String>();
+						portalGunLore.add(args[1]);
+	
+						portalGunMeta.setLore(portalGunLore);
+						portalGun.setItemMeta(portalGunMeta);
+	
+						player.getInventory().addItem(portalGun);
+						return true;
+					} else {
+						return false;
+					}
 				} else if (player.hasPermission("jerrycraft.dial.local")){
 					x = Integer.parseInt(args[0]);
 					y = Integer.parseInt(args[1]);
