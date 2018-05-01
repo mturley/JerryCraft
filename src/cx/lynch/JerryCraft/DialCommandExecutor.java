@@ -29,10 +29,10 @@ public class DialCommandExecutor implements CommandExecutor {
 				Player player = (Player) sender;
 				boolean valid = false;
 				int x = 0, y = 0, z = 0;
-				String world;
+				String world = player.getLocation().getWorld().getName();
 
 				// Determine what type of command is issued.
-				if (args.length == 1) {
+				if (args.length == 1 && player.hasPermission("jerrycraft.dial.preset")) {
 					// TODO: A database for warps
 					switch (args[0]) {
 					case "spawn":
@@ -41,7 +41,7 @@ public class DialCommandExecutor implements CommandExecutor {
 						z = 330;
 						world = "world";
 					}
-				} else if (args.length == 2) {
+				} else if (args.length == 2 && player.hasPermission("jerrycraft.dial.bungee")) {
 					// Make the portalgun Item & add it to the player's inventory
 					ItemStack portalGun = new ItemStack(Material.DIAMOND_HOE);
 					portalGun.addEnchantment(Enchantment.VANISHING_CURSE, 1);
@@ -57,14 +57,13 @@ public class DialCommandExecutor implements CommandExecutor {
 
 					player.getInventory().addItem(portalGun);
 					return true;
-				} else {
+				} else if (player.hasPermission("jerrycraft.dial.local")){
 					x = Integer.parseInt(args[0]);
 					y = Integer.parseInt(args[1]);
 					z = Integer.parseInt(args[2]);
 				}
 
 				// Set the destination world
-				world = player.getLocation().getWorld().getName();
 				if (args.length > 3) {
 					world = args[3];
 				}
