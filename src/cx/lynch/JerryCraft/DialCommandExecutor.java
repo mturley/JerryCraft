@@ -69,6 +69,8 @@ public class DialCommandExecutor implements CommandExecutor {
 					x = Integer.parseInt(args[0]);
 					y = Integer.parseInt(args[1]);
 					z = Integer.parseInt(args[2]);
+				} else {
+					return false;
 				}
 
 				// Set the destination world
