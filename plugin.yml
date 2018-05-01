@@ -1,0 +1,17 @@
+name: JerryCraft
+main: cx.lynch.JerryCraft.JerryCraft
+version: 1.0
+commands:
+   dial:
+      description: Dial an address on your portal gun.
+      permission: JerryCraft.dial
+      permission-message: Lick-Lick-Lick My Balls! You don't have <permission>.
+permissions:
+   JerryCraft.dial.free:
+      description: Allows for free portaling.
+      default: op
+   JerryCraft.dial.anywhere:
+      description: Allows user to bypass restricted areas.
+      default: op
+   JerryCraft.dial.block:
+      description: Allows user to create teleport blockers.
